@@ -4,6 +4,7 @@ const bodyparser = require('body-parser')
 const express = require('express');
 const storage = require('node-persist');
 // const bodyParser = require('body-parser');
+const port=process.env.PORT || 8000
 const app = express()
 const jsonbody = bodyparser.json()
 storage.init()
@@ -106,7 +107,7 @@ app.get('/topper', async (req, res) => {
             }
     }
     }
-    console.log(arr)
+    // console.log(arr)
 
     for(let i=0;i<students.length;i++){
         if(arr[0]===(Number(students[i].gpa))){
@@ -139,6 +140,6 @@ app.post('/student', jsonbody, async (req, res) => {
     res.send("student add ")
 })
 
-app.listen(8000, () => {
-    console.log('server Stared')
+app.listen(port, () => {
+    console.log('Server Started')
 })
